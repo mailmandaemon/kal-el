@@ -1,0 +1,19 @@
+{
+  "name": "kal-el-1",
+  "version": "1.0.0",
+  "description": "calendar for lfg",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "mailer",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.5"
+  }
+}
