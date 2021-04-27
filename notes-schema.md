@@ -1,10 +1,16 @@
-# key fields to extract to mongo
+## key fields to extract to mongo
 timestamp:
 fields
  value: 'Deep Stone Crypt', name: 'Activity:'
  value: '07:30 PM AET 04/27', name: 'Start Time:'
  value: '1903', name: 'Join Id:'
 
+## Example of Mongo record
+_id:"2143"
+__v:0
+lfgName:"Quickplay"
+lfgStartTime:2021-04-30T12:30:00.000+00:00
+lfgTime:"10:30 PM AET 04/30"
 
 # example of output from msg.embeds[0]
 MessageEmbed {
