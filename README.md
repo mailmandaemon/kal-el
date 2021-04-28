@@ -20,3 +20,5 @@ Date          | Time         | Activity         | Join ID
 - [ ] Remove content on message deletion
 - [x] Format db content in ascending date order
 - [ ] Send formatted message to channel
+- [ ] Set trigger on insert document or poll at interval
+- [ ] Delete expired documents 

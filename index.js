@@ -5,7 +5,8 @@ const lfgSchema = require('./schemas/lfg-schema')
 const config = require('./config.json')
 const mongo = require('./mongo')
 
-//client.on('message', (msg) => {
+// code snippet for all embeds, not sure how many
+// client.on('message', (msg) => {
 //    msg.embeds.forEach((embed) => {
 //
 //    });
@@ -21,6 +22,7 @@ client.on('message', async (msg) => {
         const plfgName = msg.embeds[0].fields[0].value
         const plfgTime = msg.embeds[0].fields[1].value
         const plfgID = msg.embeds[0].fields[2].value
+        const plfgMembers = msg.embeds.fields[3].value
         console.log(plfgName,plfgTime,plfgID,plfgStartTime)
         await mongo().then(async (mongoose) => {
             try {
@@ -31,13 +33,28 @@ client.on('message', async (msg) => {
                     _id: plfgID,
                     lfgTime: plfgTime,
                     lfgName: plfgName,
-                    lfgStartTime: plfgStartTime
+                    lfgStartTime: plfgStartTime,
+                    lfgMembers: plfgMembers
                 },
                 {upsert:true,
                 })
             } finally 
             {mongoose.connection.close}
         })
+        //attempt to set function to wait 5s to query database
+        setTimeout(() => 
+        await mongo().then(async (mongoose) => {
+            try {
+                 const result = await lfgSchema.findOne({
+// need to define variables to store data
+                 }, 
+                 {
+                     sort:{lfgStartTime:-1}})
+            } finally 
+// try and send channel message from here
+            {mongoose.connection.close}
+        })
+        , 5000)
     }
 })
 client.on('ready', async () => {
