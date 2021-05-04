@@ -13,7 +13,10 @@ message.channel.send({embed: {
   });
 ```
 ### Example Of how I might use it
-Need to work out how to iterate over embed fields and ensure uniform width 
+Need to work out how to iterate over embed fields to  
+- ensure uniform width of Date, time and activity columns
+- append \n to the end of each result
+
 ```javascript
 const AllDates = "Date1\nDate2\nDate3"
 const AllTimes = "Time1\nTime2\nTime3"
