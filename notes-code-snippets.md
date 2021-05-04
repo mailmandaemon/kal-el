@@ -15,15 +15,21 @@ message.channel.send({embed: {
 ### Example Of how I might use it
 Need to work out how to iterate over embed fields and ensure uniform width 
 ```javascript
-message.channel.send({embed: {
-      color: 3447003,
-      title: "Planned LFGs:",
-      fields: [
-        { name: "Date", value: "Date1\nDate2\nDate3", inline: true},
-        { name: "Time", value: "Time1\nTime2\nTime3", inline: true}
-        { name: "Activity", value: "Activity1\nActivity2\nActivity3", inline: true}
-        { name: "Join ID", value: "Join_ID1\nJoin_ID2\nJoin_ID3", inline: true}
+const AllDates = "Date1\nDate2\nDate3"
+const AllTimes = "Time1\nTime2\nTime3"
+const AllActivities = "Activity1\nActivity2\nActivity3"
+const AllJoinIDs = "Join_ID1\nJoin_ID2\nJoin_ID3"
+
+const embed = new Discord.Message.Embed()
+      .setColor: 3447003,
+      .setTitle: "Planned LFGs:",
+      .setFooter: // add author and last updated message
+      .addFields: [
+        { name: "Date", value: AllDates, inline: true},
+        { name: "Time", value: AllTimes, inline: true}
+        { name: "Activity", value: AllActivties, inline: true}
+        { name: "Join ID", value: AllJoinIDs, inline: true}
       ]
-    }
-  });
+
+message.channel.send(embed);
 ``` 
