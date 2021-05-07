@@ -42,8 +42,13 @@ const validatePermissions = (permissions) => {
   }
 };
 
+const allCommands = {}
+
 module.exports = (commandOptions) => {
-  let { commands, permissions = [] } = commandOptions;
+  let { 
+    commands, 
+    permissions = [] 
+  } = commandOptions;
 
   // Ensure the command and aliases are in an array
   if (typeof commands === 'string') {
@@ -70,8 +75,6 @@ module.exports = (commandOptions) => {
   }
 };
 
-const allCommands = {};
-
 module.exports.listen = (client) => {
   // Listen for messages
   client.on('message', (message) => {
@@ -83,10 +86,12 @@ module.exports.listen = (client) => {
     // Remove the command which is the first index
     const name = arguments.shift().toLowerCase();
 
+
     if (name.startsWith(prefix)) {
       const command = allCommands[name.replace(prefix, '')];
-      return;
-    }
+      if (!command) {
+        return;
+      }
 
     const {
       permissions,
@@ -97,7 +102,6 @@ module.exports.listen = (client) => {
       expectedArgs,
       callback,
     } = command;
-    // A command has been ran
 
     // Ensure the user has the required permissions
     for (const permission of permissions) {
@@ -130,5 +134,6 @@ module.exports.listen = (client) => {
 
     // Handle the custom command code
     callback(message, arguments, arguments.join(' '), client);
+    }
   });
 };
