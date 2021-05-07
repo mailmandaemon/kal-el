@@ -3,6 +3,6 @@ module.exports = {
     minArgs: 0,
     macArgs: 0,
     callback: (message, arguments, text) => {
-        message.reply('Pong!')
+        message.reply('Pong!');
     }
 }
