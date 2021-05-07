@@ -4,4 +4,5 @@ module.exports = {
     macArgs: 0,
     callback: (message, arguments, text) => {
         message.reply('Pong!');
+    },
 }
